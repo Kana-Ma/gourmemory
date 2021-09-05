@@ -27,6 +27,7 @@ class PointsGenre
     genre.save
     point = Point.new(point1: point1, point2: point2, point3: point3, explanation: explanation, user_id: user_id, genre_id: genre.id)
     return if point.valid?
+
     point.errors.each do |attr, error|
       errors.add(attr, error)
     end

@@ -1,5 +1,4 @@
 class PointsController < ApplicationController
-
   def new
     @point_genre = PointsGenre.new
   end
@@ -16,8 +15,9 @@ class PointsController < ApplicationController
 
   def search
     return nil if params[:keyword] == ''
+
     genre = Genre.where(['genre_name LIKE ?', "%#{params[:keyword]}%"])
-    render json:{ keyword: genre }
+    render json: { keyword: genre }
   end
 
   private
