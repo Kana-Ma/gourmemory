@@ -12,4 +12,7 @@ class User < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
+
+  has_many :user_genre_relations
+  has_many :genres, through: :user_genre_relations
 end
