@@ -1,0 +1,29 @@
+<h2>ジャンル設定</h2>
+<%= form_with model: @point_genre, url: points_path, local: true do |f| %>
+<%= render 'shared/error_messages', model: f.object %>
+  <div>
+    <%= f.label :genre_name, "ジャンル" %>
+    <%= f.text_field :genre_name %>
+  </div>
+  <div id="search-result">
+  </div>
+  <div>
+    <%= f.label :point1, "Point1" %>
+    <%= f.text_field :point1 %>
+  </div>
+  <div>
+    <%= f.label :point2, "Point2" %>
+    <%= f.text_field :point2 %>
+  </div>
+  <div>
+    <%= f.label :point3, "Point3" %>
+    <%= f.text_field :point3 %>
+  </div>
+  <div>
+    <%= f.label :explanation, "このジャンルの評価ポイント" %>
+    <%= f.text_area :explanation %>
+  </div>
+  <div class="submit-post">
+    <%= f.submit "設定", class: "submit-btn" %>
+  </div>
+<% end %>
