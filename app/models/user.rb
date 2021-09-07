@@ -15,4 +15,6 @@ class User < ApplicationRecord
 
   has_many :user_genre_relations
   has_many :genres, through: :user_genre_relations
+  has_many :points
+  has_many :shops
 end
