@@ -1,0 +1,101 @@
+<h2>お店投稿ページ</h2>
+
+<%= form_with model: @shop, url: shops_path, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class='hoge'>
+    <label class='hoge' for='fuga'>ジャンル</label>
+  </div>
+  <div class='hoge'>
+    <select id="selected_genre">
+      <option value="">ジャンルを選択してください</option>
+      <% @genre_ids.each do |genre_id| %>
+        <% Genre.where(id: genre_id).each do |genre| %>
+          <option value=<%= genre.id %>><%= genre.genre_name %></option>
+        <% end %>
+      <% end %>
+    </select>
+  </div>
+  <div>
+    <%= f.label :shop_name, "店舗名" %>
+    <%= f.text_field :shop_name %>
+  </div>
+  <div>
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address %>
+  </div>
+  <div class="form-group row" id="total-star">
+    <%= f.label :total_rate, "総合評価", class:'col-md-3 col_form_label' %>
+    <%= f.hidden_field :total_rate, id: :review_star %>
+  </div>
+  <!-- 評価javascript -->
+  <script>
+  $('#total-star').raty({
+    size     : 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'shop[total_rate]',
+    half: true,
+  });
+  </script>
+
+  <%= f.hidden_field :genre_id, id: :genre_id, value: "" %>
+  <%= f.hidden_field :point_id, id: :point_id, value: "" %>
+
+  <div class="form-group row" id="star1">
+    <%= f.label :rate1, "Point1", class:'col-md-3 col_form_label', id: :point1 %>
+    <%= f.hidden_field :rate1, id: :review_star %>
+  </div>
+  <!-- 評価javascript -->
+  <script>
+  $('#star1').raty({
+    size     : 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'shop[rate1]',
+    half: true,
+  });
+  </script>
+  <div class="form-group row" id="star2">
+    <%= f.label :rate2, "Point2", class:'col-md-3 col_form_label', id: :point2 %>
+    <%= f.hidden_field :rate2, id: :review_star %>
+  </div>
+  <!-- 評価javascript -->
+  <script>
+  $('#star2').raty({
+    size     : 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'shop[rate2]',
+    half: true,
+  });
+  </script>
+  <div class="form-group row" id="star3">
+    <%= f.label :rate3, "Point3", class:'col-md-3 col_form_label', id: :point3 %>
+    <%= f.hidden_field :rate3, id: :review_star %>
+  </div>
+  <!-- 評価javascript -->
+  <script>
+  $('#star3').raty({
+    size     : 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'shop[rate3]',
+    half: true,
+  });
+  </script>
+  <div>
+    <%= f.label :text, "評価コメント" %>
+    <%= f.text_area :text %>
+  </div>
+  <label class="form-image">
+    <span class="image-file">写真</span>
+    <%= f.file_field :image, class: 'hidden' %>
+  </label>
+  <div class="submit-post">
+    <%= f.submit "登録", class: "submit-btn" %>
+  </div>
+<% end %>
