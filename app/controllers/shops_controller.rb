@@ -11,7 +11,7 @@ class ShopsController < ApplicationController
 
   def search
     point = Point.where(genre_id: params[:genre_id], user_id: current_user.id)
-    render json:{ point: point }
+    render json: { point: point }
   end
 
   def create
@@ -27,6 +27,8 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:shop_name, :address, :total_rate, :rate1, :rate2, :rate3, :text, :image, :point_id, :genre_id).merge(user_id: current_user.id)
+    params.require(:shop).permit(
+      :shop_name, :address, :total_rate, :rate1, :rate2, :rate3, :text, :image, :point_id, :genre_id
+    ).merge(user_id: current_user.id)
   end
 end
