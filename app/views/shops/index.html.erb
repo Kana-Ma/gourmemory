@@ -1,15 +1,99 @@
-<h1>gourmemory</h1>
-
-<ul class='lists-right'>
+<div class='header-area'>
+  <div>
+    <%= link_to image_tag('logo.png', class:'logo-icon'), '/' %>
+  </div>
+</div>
+<div class='nav-bar'>
+  <div class='right-nav'>
+    <span class='hello'>こんにちは</span>
+    <% if user_signed_in? %>
+      <span class='user-name'>
+        <%= "#{current_user.nickname}さん" %>
+      </span>
+    <% end %>
+  </div>
+  <ul class='left-nav'>
+    <% if user_signed_in? %>
+      <li class='user-buttons'>
+        <%= link_to 'マイページ', "#", class: 'user-button' %>
+      </li>
+      <li class='user-buttons'>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'user-button' %>
+      </li>
+    <% else %>
+      <li class='user-buttons'>
+        <%= link_to 'ログイン', new_user_session_path, class: 'user-button' %>
+      </li>
+      <li class='user-buttons'>
+        <%= link_to '新規登録', new_user_registration_path, class: 'user-button' %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class='message-area'>
+  <p class='message'>
+    あなたの美味しい記憶を投稿し、みんなでシェアしましょう
+  </p>
+</div>
+<div class='post-area'>
   <% if user_signed_in? %>
-    <%= "こんにちは、#{current_user.nickname}さん" %>
-    <li><%= link_to 'マイページ', "#", class: "user-nickname" %></li>
-    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-  <% else %>
-    <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-    <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+    <div class='post-buttons'>
+      <%= link_to 'お店を投稿する', new_shop_path, class: 'post-button' %>
+    </div>
+    <div class='post-buttons'>
+      <%= link_to 'ジャンルを設定する', new_point_path, class: 'post-button' %>
+    </div>
   <% end %>
-</ul>
-
-<%= link_to 'ジャンル設定', new_point_path %>
-<%= link_to 'お店投稿', new_shop_path %>
+</div>
+<div class='main-area'>
+  <p class='title-new'>
+    新着一覧
+  </p>
+  <hr class="line" />
+  <div class='shop-area'>
+    <% @shops.each do |shop| %>
+      <div class='one-shop'>
+        <div class='shop-pic'>
+          <% if shop.image.attached? %>
+            <%= image_tag shop.image.variant(resize: '250x250') %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: '150x150' %>
+          <% end %>
+        </div>
+        <div class='shop-name'>
+          <span>
+            <%= shop.shop_name %>
+          </span>
+        </div>
+        <div class='genre-name'>
+          <span>
+            （ジャンル：<%= shop.genre.genre_name %>）
+          </span>
+        </div>
+        <div class='rate'>
+          <span>
+            総合：
+          </span>
+          <span id="star-rate-<%= shop.id %>">
+          </span>
+          <script>
+            $('#star-rate-<%= shop.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= shop.total_rate %>,
+            });
+          </script>
+        </div>
+        <div class='nickname'>
+          <span>
+            by：<%= shop.user.nickname %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
