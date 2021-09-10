@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class='nav-bar'>
-  <div class='right-nav'>
+  <div class='left-nav'>
     <span class='hello'>こんにちは</span>
     <% if user_signed_in? %>
       <span class='user-name'>
@@ -12,7 +12,7 @@
       </span>
     <% end %>
   </div>
-  <ul class='left-nav'>
+  <ul class='right-nav'>
     <% if user_signed_in? %>
       <li class='user-buttons'>
         <%= link_to 'マイページ', "#", class: 'user-button' %>
