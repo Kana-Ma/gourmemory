@@ -1,5 +1,7 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_shop, only: [:show, :edit, :update]
+  before_action :check_contributor, only: [:edit, :update]
 
   def index
     @shops = Shop.order('created_at DESC')
@@ -26,7 +28,17 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @shop = Shop.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @shop.update(shop_params)
+      redirect_to shop_path(@shop.id)
+    else
+      render action: :edit
+    end
   end
 
   private
@@ -35,5 +47,15 @@ class ShopsController < ApplicationController
     params.require(:shop).permit(
       :shop_name, :address, :total_rate, :rate1, :rate2, :rate3, :text, :image, :point_id, :genre_id
     ).merge(user_id: current_user.id)
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:id])
+  end
+
+  def check_contributor
+    unless @shop.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 end

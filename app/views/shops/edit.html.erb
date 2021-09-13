@@ -4,7 +4,7 @@
   <div class='shop-detail'>
     <div class='name'>
       <span>
-        新規投稿
+        編集
       </span>
     </div>
     <div class='post-message'>
@@ -12,29 +12,17 @@
       <p>写真の投稿は任意です</p>
     </div>
     <div class='form-area'>
-      <%= form_with model: @shop, url: shops_path, local: true do |f| %>
+      <%= form_with model: @shop, url: shop_path(@shop.id), local: true do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
 
         <div class='select-genre'>
           <div class='form-title'>
-            <label class='' for=''>ジャンル</label>
+            <label>ジャンル</label>
           </div>
-          <div class=''>
-            <select id="selected_genre">
-              <option value="">ジャンルを選択してください</option>
-              <% @genre_ids.each do |genre_id| %>
-                <% Genre.where(id: genre_id).each do |genre| %>
-                  <option value=<%= genre.id %>><%= genre.genre_name %></option>
-                <% end %>
-              <% end %>
-            </select>
+          <div>
+            <%= @shop.genre.genre_name %>
           </div>
         </div>
-        <div class='genre-alert-message'>
-          <p>選択肢にないジャンルを投稿する場合は、</p>
-          <p><%= link_to 'こちら', new_point_path, class: 'new-genre-btn' %>から設定してください</p>
-        </div>
-
         <div class='shop-name-form'>
           <div class='form-title'>
             <%= f.label :shop_name, "店舗名" %>
@@ -52,12 +40,12 @@
           </div>
         </div>
 
-        <%= f.hidden_field :genre_id, id: :genre_id, value: "" %>
-        <%= f.hidden_field :point_id, id: :point_id, value: "" %>
+        <%= f.hidden_field :genre_id, id: :genre_id, value: @shop.genre_id %>
+        <%= f.hidden_field :point_id, id: :point_id, value: @shop.point_id %>
 
         <div class='star-form'>
           <div class='form-title'>
-            <%= f.label :rate1, "Point1", class:'col-md-3 col_form_label', id: :point1 %>
+            <%= f.label :rate1, @shop.point.point1, class:'col-md-3 col_form_label', id: :point1 %>
           </div>
           <div class="form-group row" id="star1">
             <%= f.hidden_field :rate1, id: :review_star %>
@@ -69,6 +57,7 @@
             starOff: '<%= asset_path('star-off.png') %>',
             starOn: '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @shop.rate1 %>,
             scoreName: 'shop[rate1]',
             half: true,
           });
@@ -77,7 +66,7 @@
 
         <div class='star-form'>
           <div class='form-title'>
-            <%= f.label :rate2, "Point2", class:'col-md-3 col_form_label', id: :point2 %>
+            <%= f.label :rate2, @shop.point.point2, class:'col-md-3 col_form_label', id: :point2 %>
           </div>
           <div class="form-group row" id="star2">
             <%= f.hidden_field :rate2, id: :review_star %>
@@ -89,6 +78,7 @@
             starOff: '<%= asset_path('star-off.png') %>',
             starOn: '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @shop.rate2 %>,
             scoreName: 'shop[rate2]',
             half: true,
           });
@@ -97,7 +87,7 @@
 
         <div class='star-form'>
           <div class='form-title'>
-            <%= f.label :rate3, "Point3", class:'col-md-3 col_form_label', id: :point3 %>
+            <%= f.label :rate3, @shop.point.point3, class:'col-md-3 col_form_label', id: :point3 %>
           </div>
           <div class="form-group row" id="star3">
             <%= f.hidden_field :rate3, id: :review_star %>
@@ -109,6 +99,7 @@
             starOff: '<%= asset_path('star-off.png') %>',
             starOn: '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @shop.rate3 %>,
             scoreName: 'shop[rate3]',
             half: true,
           });
@@ -129,6 +120,7 @@
             starOff: '<%= asset_path('star-off.png') %>',
             starOn: '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @shop.total_rate %>,
             scoreName: 'shop[total_rate]',
             half: true,
           });
@@ -153,7 +145,7 @@
           </div>
         </div>
         <div class="submit-post">
-          <%= f.submit "投稿", class: "submit-btn" %>
+          <%= f.submit "編集", class: "submit-btn" %>
         </div>
       <% end %>
     </div>

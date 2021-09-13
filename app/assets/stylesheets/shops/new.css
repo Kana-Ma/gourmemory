@@ -1,0 +1,67 @@
+.post-message {
+  margin: 30px;
+  font-size: 15px;
+  color: #e83820;
+}
+
+.form-area {
+  width: 600px;
+  margin: 30px auto;
+}
+
+.select-genre, .shop-name-form, .address-form, .star-form, .image-form {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 5px;
+}
+
+.text-form {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin: 5px;
+}
+
+.genre-alert-message {
+  text-align: left;
+  margin-left: 160px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.new-genre-btn {
+  display: inline-block;
+	padding: 0.1em 0.3em;
+	transition: all .3s;
+  color: #ed6d46;
+}
+.new-genre-btn:hover {
+  color: white;
+	background-color: #ed6d46;
+}
+
+.form-title {
+  width: 220px;
+}
+
+input[type='text'] {
+  width: 300px;
+  height: 30px;
+}
+
+textarea {
+  width: 350px;
+  height: 60px;
+}
+
+.submit-btn {
+  width: 160px;
+  height: 50px;
+	margin: 30px;
+	cursor: pointer;
+	color: #ffffff;
+	border: 1px solid #ed6d46;
+	background: #ed6d46;
+  font-size: 18px;
+}
