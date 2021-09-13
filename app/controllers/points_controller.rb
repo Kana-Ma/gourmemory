@@ -1,5 +1,5 @@
 class PointsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @point_genre = PointsGenre.new
