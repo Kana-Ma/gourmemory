@@ -1,0 +1,26 @@
+<div class='header'>
+  <div class='header-left-area'>
+    <div class='logo-area'>
+      <%= link_to image_tag('logo.png', size: '120x120'), '/' %>
+    </div>
+  </div>
+  <div class='header-right-area'>
+    <ul class='right-nav'>
+      <% if user_signed_in? %>
+        <li class='user-buttons'>
+          <%= link_to 'マイページ', "#", class: 'user-button' %>
+        </li>
+        <li class='user-buttons'>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'user-button' %>
+        </li>
+      <% else %>
+        <li class='user-buttons'>
+          <%= link_to 'ログイン', new_user_session_path, class: 'user-button' %>
+        </li>
+        <li class='user-buttons'>
+          <%= link_to '新規登録', new_user_registration_path, class: 'user-button' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

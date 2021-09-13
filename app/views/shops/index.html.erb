@@ -53,18 +53,20 @@
   <div class='shop-area'>
     <% @shops.each do |shop| %>
       <div class='one-shop'>
-        <div class='shop-pic'>
-          <% if shop.image.attached? %>
-            <%= image_tag shop.image.variant(resize: '250x250') %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', size: '150x150' %>
-          <% end %>
-        </div>
-        <div class='shop-name'>
-          <span>
-            <%= shop.shop_name %>
-          </span>
-        </div>
+        <%= link_to shop_path(shop.id), class:'shop-link' do %>
+          <div class='shop-pic'>
+            <% if shop.image.attached? %>
+              <%= image_tag shop.image.variant(resize: '250x250') %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: '150x150' %>
+            <% end %>
+          </div>
+          <div class='shop-name'>
+            <span>
+              <%= shop.shop_name %>
+            </span>
+          </div>
+        <% end %>
         <div class='genre-name'>
           <span>
             （ジャンル：<%= shop.genre.genre_name %>）

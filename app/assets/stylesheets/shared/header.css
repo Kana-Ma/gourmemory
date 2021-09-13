@@ -1,0 +1,23 @@
+.header {
+  background-color: #2bb7b3;
+  height: 150px;
+  display: flex;
+}
+
+.header-left-area {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.logo-area {
+  margin-left: 80px;
+}
+
+.header-right-area {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+}

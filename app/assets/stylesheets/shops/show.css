@@ -1,0 +1,84 @@
+.main-content {
+  background-color: #ed6d46;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-detail {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0 30px;
+  color: #00979b;
+  text-align: center;
+}
+
+.name {
+  font-size: 30px;
+  height: 40px;
+  border-bottom: 4px double #fff100;
+  margin: 30px 30px 10px 30px;
+}
+
+.genre {
+  padding-left: 50%;
+}
+
+.pic {
+  margin: 30px;
+}
+
+.shop-nickname {
+  text-align: center;
+  height: 30px;
+}
+
+.rate1-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+
+.point {
+  width: 50%;
+  text-align: end;
+}
+
+.point-star {
+  width: 50%;
+  text-align: start;
+}
+
+.total-rate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.total {
+  width: 50%;
+  text-align: end;
+  font-size: 25px;
+}
+
+.total-star {
+  width: 50%;
+  text-align: start;
+}
+
+.text-area {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.text-nickname {
+  margin: 10px;
+}
+
+.text {
+  border: 2px solid #fff100;
+  padding: 10px;
+}

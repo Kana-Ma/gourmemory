@@ -1,0 +1,136 @@
+<%= render 'shared/header' %>
+
+<div class='main-content'>
+  <div class='shop-detail'>
+    <div class='name'>
+      <span>
+        <%= @shop.shop_name %>
+      </span>
+    </div>
+    <div class='genre'>
+      <span>
+        （ジャンル：<%= @shop.genre.genre_name %>）
+      </span>
+    </div>
+    <div class='pic'>
+      <% if @shop.image.attached? %>
+        <%= image_tag @shop.image.variant(resize: '250x250') %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', size: '150x150' %>
+      <% end %>
+    </div>
+    <div class='shop-nickname'>
+      <span>
+        <%= @shop.user.nickname %>さんの評価
+      </span>
+    </div>
+    <div class='rate1-3'>
+      <div class='point'>
+        <span>
+          <%= @shop.point.point1 %>：
+        </span>
+      </div>
+      <div class='point-star'>
+        <span id="star-rate1">
+        </span>
+        <script>
+          $('#star-rate1').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @shop.rate1 %>,
+          });
+        </script>
+      </div>
+    </div>
+    <div class='rate1-3'>
+      <div class='point'>
+        <span>
+          <%= @shop.point.point2 %>：
+        </span>
+      </div>
+      <div class='point-star'>
+        <span id="star-rate2">
+        </span>
+        <script>
+          $('#star-rate2').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @shop.rate2 %>,
+          });
+        </script>
+      </div>
+    </div>
+    <div class='rate1-3'>
+      <div class='point'>
+        <span>
+          <%= @shop.point.point3 %>：
+        </span>
+      </div>
+      <div class='point-star'>
+        <span id="star-rate3">
+        </span>
+        <script>
+          $('#star-rate3').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @shop.rate3 %>,
+          });
+        </script>
+      </div>
+    </div>
+    <div class='total-rate'>
+      <div class='total'>
+        <span>
+          総合：
+        </span>
+      </div>
+      <div class='total-star'>
+        <span id="star-total-rate">
+        </span>
+        <script>
+          $('#star-total-rate').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @shop.total_rate %>,
+          });
+        </script>
+      </div>
+    </div>
+    <div class='text-area'>
+      <div class='text-nickname'>
+        <span>
+          <%= @shop.user.nickname %>さんの評価コメント
+        </span>
+      </div>
+      <div class='text'>
+        <%= @shop.text %>
+      </div>
+    </div>
+    <div class='post-area'>
+      <% if user_signed_in? && current_user.id == @shop.user_id %>
+        <div class='post-buttons'>
+          <%= link_to '編集', root_path, class: 'post-button' %>
+        </div>
+        <div class='post-buttons'>
+          <%= link_to '削除', root_path, class: 'post-button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
