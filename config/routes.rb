@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :shops, only: [:new, :create, :show] do
+  resources :shops, only: [:new, :create, :show, :edit, :update] do
     collection do
       get 'search'
     end

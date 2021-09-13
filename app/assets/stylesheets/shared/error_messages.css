@@ -1,0 +1,15 @@
+.error-alert {
+  margin: 30px auto;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+.error-messages {
+  list-style: none;
+  color: #e83820;
+}
+
+.error-message {
+  height: 20px;
+}

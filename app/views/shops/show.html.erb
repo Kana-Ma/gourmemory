@@ -125,7 +125,7 @@
     <div class='post-area'>
       <% if user_signed_in? && current_user.id == @shop.user_id %>
         <div class='post-buttons'>
-          <%= link_to '編集', root_path, class: 'post-button' %>
+          <%= link_to '編集', edit_shop_path(@shop.id), class: 'post-button' %>
         </div>
         <div class='post-buttons'>
           <%= link_to '削除', root_path, class: 'post-button' %>
