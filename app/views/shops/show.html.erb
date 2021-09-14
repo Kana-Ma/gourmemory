@@ -128,7 +128,7 @@
           <%= link_to '編集', edit_shop_path(@shop.id), class: 'post-button' %>
         </div>
         <div class='post-buttons'>
-          <%= link_to '削除', root_path, class: 'post-button' %>
+          <%= link_to '削除', shop_path(@shop.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'post-button' %>
         </div>
       <% end %>
     </div>
