@@ -1,7 +1,7 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_shop, only: [:show, :edit, :update]
-  before_action :check_contributor, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_action :check_contributor, only: [:edit, :update, :destroy]
 
   def index
     @shops = Shop.order('created_at DESC')
@@ -38,6 +38,14 @@ class ShopsController < ApplicationController
       redirect_to shop_path(@shop.id)
     else
       render action: :edit
+    end
+  end
+
+  def destroy
+    if @shop.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
