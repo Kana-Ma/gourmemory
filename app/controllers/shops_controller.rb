@@ -53,7 +53,7 @@ class ShopsController < ApplicationController
 
   def shop_params
     params.require(:shop).permit(
-      :shop_name, :address, :total_rate, :rate1, :rate2, :rate3, :text, :image, :point_id, :genre_id
+      :shop_name, :address, :total_rate, :rate1, :rate2, :rate3, :text, :image, :point_id, :genre_id, :latitude, :longitude
     ).merge(user_id: current_user.id)
   end
 
