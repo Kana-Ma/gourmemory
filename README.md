@@ -76,6 +76,8 @@
 | user       | references | null: false, foreign_key: true |
 | genre      | references | null: false, foreign_key: true |
 | point      | references | null: false, foreign_key: true |
+| latitude   | float      |                                |
+| longitude  | float      |                                |
 
 ### Association
 
