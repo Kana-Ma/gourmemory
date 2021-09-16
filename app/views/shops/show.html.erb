@@ -147,7 +147,7 @@
     infowindow = new google.maps.InfoWindow();
 
     map = new google.maps.Map(
-        document.getElementById('map'), {center: shopAddress, zoom: 15});
+      document.getElementById('map'), {center: shopAddress, zoom: 15});
 
     var request = {
       query: '<%= @shop.address %><%= @shop.shop_name %>',
@@ -167,7 +167,7 @@
           map,
           position: results[0].geometry.location
         })
-        
+
         google.maps.event.addListener(marker, "click", () => {
           infowindow.setContent(
             '<div class="map-window">' +
