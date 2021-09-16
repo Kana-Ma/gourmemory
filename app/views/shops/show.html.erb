@@ -165,7 +165,7 @@
       ) {
         const marker = new google.maps.Marker({
           map,
-          position: results[0].geometry.location,
+          position: results[0].geometry.location
         })
         
         google.maps.event.addListener(marker, "click", () => {
@@ -186,5 +186,5 @@
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 <script
   src='https://maps.googleapis.com/maps/api/js?key=<%= ENV["MAPS_API_KEY"] %>&callback=initMap&libraries=places&v=weekly'
-  async
+  async defer
 ></script>
