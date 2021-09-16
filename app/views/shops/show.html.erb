@@ -141,7 +141,9 @@
   var service;
   var infowindow;
 
-  function initMap() {
+  function initMap() {console.log('OK')}
+
+/*  function initMap() {
     var shopAddress = new google.maps.LatLng(<%= @shop.latitude %>, <%= @shop.longitude %>);
 
     infowindow = new google.maps.InfoWindow();
@@ -180,7 +182,7 @@
         })
       }
     });
-  }
+  }*/
 </script>
 
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
