@@ -50,5 +50,7 @@ test:
 production:
   <<: *default
   database: gourmemory_production
-  username: gourmemory
-  password: <%= ENV['GOURMEMORY_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
+  
