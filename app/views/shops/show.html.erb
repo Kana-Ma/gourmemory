@@ -137,10 +137,6 @@
 </div>
 
 <script>
-  //var map;
-  //var service;
-  //var infowindow;
-
   function initMap() {
     console.log('initMap OK')
     const shopAddress = new google.maps.LatLng(<%= @shop.latitude %>, <%= @shop.longitude %>);
@@ -180,47 +176,6 @@
       }
     });
   }
-
-/*  function initMap() {
-    var shopAddress = new google.maps.LatLng(<%= @shop.latitude %>, <%= @shop.longitude %>);
-
-    infowindow = new google.maps.InfoWindow();
-
-    map = new google.maps.Map(
-      document.getElementById('map'), {center: shopAddress, zoom: 15});
-
-    var request = {
-      query: '<%= @shop.address %><%= @shop.shop_name %>',
-      fields: ['geometry', 'name', 'formatted_address', 'place_id'],
-    };
-
-    var service = new google.maps.places.PlacesService(map);
-
-    service.findPlaceFromQuery(request, function(results, status) {
-      if (
-        status === google.maps.places.PlacesServiceStatus.OK &&
-        results &&
-        results[0].geometry &&
-        results[0].geometry.location
-      ) {
-        const marker = new google.maps.Marker({
-          map,
-          position: results[0].geometry.location
-        })
-
-        google.maps.event.addListener(marker, "click", () => {
-          infowindow.setContent(
-            '<div class="map-window">' +
-              '<h2>' + results[0].name + '</h2>' +
-              '<p>' + results[0].formatted_address + '</p>' +
-              '<a href="https://www.google.com/maps/search/?api=1&query=<%= @shop.address %>+<%= @shop.shop_name %>&query_place_id=' + results[0].place_id + '">Googleマップで見る</a>' +
-            '</div>'
-          );
-          infowindow.open(map, marker);
-        })
-      }
-    });
-  }*/
   window.onload = function() {
     initMap();
   }
