@@ -79,13 +79,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 120px;
   background-color: #fff2b2;
 }
 
 .message {
   color: #ed6d46;
   font-size: 24px;
+  margin: 50px auto 10px;
 }
 
 .post-area {
@@ -96,7 +97,7 @@
 }
 
 .post-buttons {
-  margin: 50px;
+  margin: 40px 30px;
 }
 
 .post-button {
@@ -135,12 +136,32 @@
   font-size: 25px;
   color: #fff;
   text-align: center;
+  margin: 50px auto 20px;
 }
 
 .line {
   border-width: 3px 0 0 0;
 	border-style: double;
 	border-color: #ed6d46;
+}
+
+.search-area {
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form {
+  text-align: center;
+}
+
+.genre-select {
+  width: 120px;
+  height: 30px;
+  margin: 15px;
+}
+
+.search-input {
+  height: 30px;
 }
 
 .shop-area {

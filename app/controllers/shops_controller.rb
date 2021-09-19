@@ -49,6 +49,10 @@ class ShopsController < ApplicationController
     end
   end
 
+  def shop_search
+    @shops = Shop.shop_search(params[:id], params[:keyword]).order('created_at DESC')
+  end
+
   private
 
   def shop_params
