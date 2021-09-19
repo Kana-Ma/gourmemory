@@ -25,8 +25,10 @@
   </div>
   <div class='shop-area'>
     <% if @shops.empty? %>
-      <div>
-        <p>検索条件に一致する投稿はありません</p>
+      <div class='search-message'>
+        <p class='search-result'>
+          検索条件に一致する投稿はありません
+        </p>
       </div>
     <% else %>
       <% @shops.each do |shop| %>
