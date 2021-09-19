@@ -19,11 +19,11 @@ class Shop < ApplicationRecord
 
   def self.shop_search(genre_id, keyword)
     if genre_id != '' && keyword != ''
-      Shop.where("genre_id = ? and shop_name LIKE?", genre_id, "%#{keyword}%")
+      Shop.where('genre_id = ? and shop_name LIKE?', genre_id, "%#{keyword}%")
     elsif genre_id != ''
       Shop.where(genre_id: genre_id)
     elsif keyword != ''
-      Shop.where("shop_name LIKE?", "%#{keyword}%")
+      Shop.where('shop_name LIKE?', "%#{keyword}%")
     else
       Shop.all
     end
