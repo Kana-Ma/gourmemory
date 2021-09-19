@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :shops, only: [:new, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'search'
+      get 'shop_search'
     end
   end
 end
