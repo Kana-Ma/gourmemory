@@ -15,7 +15,7 @@
   <ul class='right-nav'>
     <% if user_signed_in? %>
       <li class='user-buttons'>
-        <%= link_to 'マイページ', "#", class: 'user-button' %>
+        <%= link_to 'マイページ', user_path(current_user.id), class: 'user-button' %>
       </li>
       <li class='user-buttons'>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'user-button' %>
@@ -57,6 +57,8 @@
       <%= f.submit '検索', class: 'submit-btn' %>
     <% end %>
   </div>
+</div>
+<div class='orange-back'>
   <div class='shop-area'>
     <% @shops.each do |shop| %>
       <div class='one-shop'>
@@ -99,7 +101,7 @@
         </div>
         <div class='nickname'>
           <span>
-            by：<%= shop.user.nickname %>
+            by：<%= link_to shop.user.nickname, user_path(shop.user.id), class: 'nickname-link' %>
           </span>
         </div>
       </div>

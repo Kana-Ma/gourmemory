@@ -1,0 +1,32 @@
+.genre_name {
+  height: 40px;
+  font-size: 22px;
+  margin-top: 60px;
+  margin-left: 15%;
+  text-align: left;
+}
+
+.point-area {
+  border: #fff100 dotted 2px;
+  width: 80%;
+  margin: auto;
+  padding: 20px 0 25px;
+}
+
+.points-explanation {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 30px;
+  margin-left: 35%;
+}
+
+.one-phrase {
+  height: 30px;
+  margin: 20px 0 0 0;
+}
+
+.explanation {
+  width: 80%;
+  margin: auto;
+}

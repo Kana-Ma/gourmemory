@@ -123,6 +123,11 @@
       </div>
     </div>
     <div id="map"></div>
+    <div class='link-area'>
+      <span>
+        <%= @shop.user.nickname %>さんの投稿一覧は<%= link_to 'こちら', user_path(@shop.user.id), class: 'user-page-link' %>
+      </span>
+    </div>
     <div class='post-area'>
       <% if user_signed_in? && current_user.id == @shop.user_id %>
         <div class='post-buttons'>
