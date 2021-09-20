@@ -8,7 +8,7 @@
     <ul class='right-nav'>
       <% if user_signed_in? %>
         <li class='user-buttons'>
-          <%= link_to 'マイページ', "#", class: 'user-button' %>
+          <%= link_to 'マイページ', user_path(current_user.id), class: 'user-button' %>
         </li>
         <li class='user-buttons'>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'user-button' %>
