@@ -1,3 +1,8 @@
+.not-signin-area {
+  height: 60px;
+  background-color: #fff2b2;
+}
+
 .search-result {
   margin: 50px 0 100px;
 }

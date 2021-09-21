@@ -1,0 +1,41 @@
+.form-section {
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+  font-size: 16px;
+}
+
+.form-name {
+  width: 220px;
+  text-align: left;
+  margin-right: auto;
+}
+
+.indispensable {
+  color: #e83820;
+  font-size: 15px;
+}
+
+.form-size {
+  width: 370px;
+  text-align: left;
+}
+
+.small-form {
+  width: 200px;
+  height: 30px;
+}
+
+.prefecture-form {
+  width: 150px;
+  height: 30px;
+}
+
+.large-form {
+  width: 350px;
+}
+
+.info-text {
+  font-size: 15px;
+  margin: 8px;
+}
