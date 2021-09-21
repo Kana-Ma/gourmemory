@@ -9,7 +9,7 @@ class PointsController < ApplicationController
     @point_genre = PointsGenre.new(point_params)
     if @point_genre.valid?
       @point_genre.save
-      redirect_to root_path
+      redirect_to new_shop_path
     else
       render 'new'
     end
