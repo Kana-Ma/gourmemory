@@ -1,29 +1,74 @@
-<h2>ジャンル設定</h2>
-<%= form_with model: @point_genre, url: points_path, local: true do |f| %>
-<%= render 'shared/error_messages', model: f.object %>
-  <div>
-    <%= f.label :genre_name, "ジャンル" %>
-    <%= f.text_field :genre_name %>
+<%= render 'shared/header' %>
+
+<div class='main-content'>
+  <div class='shop-detail'>
+    <div class='name'>
+      <span>
+        ジャンル・評価ポイント設定（登録）
+      </span>
+    </div>
+    <div class='post-message'>
+      <p>全ての項目を入力して下さい</p>
+    </div>
+    <div class='form-area'>
+      <%= form_with model: @point_genre, url: points_path, local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+
+        <div class='genre-search-form'>
+          <div class='form-title'>
+            <%= f.label :genre_name, "ジャンル" %>
+          </div>
+          <div>
+            <%= f.text_field :genre_name %>
+            <div id="search-result">
+            </div>
+          </div>
+        </div>
+        <p>
+          今後このジャンルのお店を投稿するときに
+        </p>
+        <p>
+          評価したい項目を3つ挙げてください
+        </p>
+        <div class='shop-name-form'>
+          <div class='form-title'>
+            <%= f.label :point1, "Point1" %>
+          </div>
+          <div>
+            <%= f.text_field :point1 %>
+          </div>
+        </div>
+        <div class='shop-name-form'>
+          <div class='form-title'>
+            <%= f.label :point2, "Point2" %>
+          </div>
+          <div>
+            <%= f.text_field :point2 %>
+          </div>
+        </div>
+        <div class='shop-name-form'>
+          <div class='form-title'>
+            <%= f.label :point3, "Point3" %>
+          </div>
+          <div>
+            <%= f.text_field :point3 %>
+          </div>
+        </div>
+        <div class='general-comment-area'>
+          <div class='general-comment'>
+            <%= f.label :explanation, "このジャンルの評価について一言" %>
+            <p>
+              （どのような点を重視するかなど、お好きにどうぞ）
+            </p>
+          </div>
+          <div>
+            <%= f.text_area :explanation, placeholder: '（例）コスパ重視です' %>
+          </div>
+        </div>
+        <div class="submit-post">
+          <%= f.submit "設定", class: "submit-btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div id="search-result">
-  </div>
-  <div>
-    <%= f.label :point1, "Point1" %>
-    <%= f.text_field :point1 %>
-  </div>
-  <div>
-    <%= f.label :point2, "Point2" %>
-    <%= f.text_field :point2 %>
-  </div>
-  <div>
-    <%= f.label :point3, "Point3" %>
-    <%= f.text_field :point3 %>
-  </div>
-  <div>
-    <%= f.label :explanation, "このジャンルの評価ポイント" %>
-    <%= f.text_area :explanation %>
-  </div>
-  <div class="submit-post">
-    <%= f.submit "設定", class: "submit-btn" %>
-  </div>
-<% end %>
+</div>

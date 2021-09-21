@@ -9,6 +9,9 @@
     <div class='post-buttons'>
       <%= link_to 'ジャンルを設定する', new_point_path, class: 'post-button' %>
     </div>
+  <% else%>
+    <div class='not-signin-area'>
+    </div>
   <% end %>
 </div>
 <div class='main-area'>
@@ -23,6 +26,8 @@
       <%= f.submit '検索', class: 'submit-btn' %>
     <% end %>
   </div>
+</div>
+<div class='orange-back'>
   <div class='shop-area'>
     <% if @shops.empty? %>
       <div class='search-message'>
@@ -72,7 +77,7 @@
           </div>
           <div class='nickname'>
             <span>
-              by：<%= shop.user.nickname %>
+              by：<%= link_to shop.user.nickname, user_path(shop.user.id), class: 'nickname-link' %>
             </span>
           </div>
         </div>

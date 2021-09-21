@@ -7,6 +7,16 @@
         <%= @user.nickname %>さんの投稿一覧
       </span>
     </div>
+    <div class='introduction-area'>
+      <div class='introduction'>
+        <p>
+          自己紹介：<%= @user.introduction %>
+        </p>
+        <p>
+          都道府県：<%= @user.prefecture.name %>
+        </p>
+      </div>
+    </div>
     <% @points.each do |point| %>
       <div class='genre_name'>
         <span>
