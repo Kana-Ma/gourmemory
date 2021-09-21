@@ -27,7 +27,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       select @user.prefecture.name, from: '都道府県'
       fill_in '自己紹介', with: @user.introduction
       # 登録ボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect {
         find('input[name="commit"]').click
       }.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
@@ -56,7 +56,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       select '---', from: '都道府県'
       fill_in '自己紹介', with: ''
       # 登録ボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect{
+      expect {
         find('input[name="commit"]').click
       }.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する

@@ -38,7 +38,7 @@ RSpec.describe 'お店投稿', type: :system do
       fill_in '評価コメント', with: @shop.text
       attach_file('shop[image]', 'public/images/test_image.png')
       # 送信するとShopモデルのカウントが1上がることを確認する
-      expect{
+      expect {
         find('input[name="commit"]').click
       }.to change { Shop.count }.by(1)
       # トップページに遷移することを確認する
@@ -106,7 +106,7 @@ RSpec.describe 'お店編集', type: :system do
       fill_in '店舗名', with: "#{@shop1.shop_name}+編集した店舗名"
       attach_file('shop[image]', 'public/images/test_image2.jpg')
       # 編集してもShopモデルのカウントは変わらないことを確認する
-      expect{
+      expect {
         find('input[name="commit"]').click
       }.to change { Shop.count }.by(0)
       # 詳細ページに遷移したことを確認する
@@ -166,7 +166,7 @@ RSpec.describe 'お店削除', type: :system do
       expect(page).to have_content('削除')
       # 削除ボタンをクリックし、アラート表示もOKし、トップページに遷移すると、レコードの数が1減ることを確認する
       click_link '削除'
-      expect{
+      expect {
         page.accept_confirm '削除しますか？'
         expect(current_path).to eq root_path
       }.to change { Shop.count }.by(-1)

@@ -31,7 +31,7 @@ RSpec.describe 'ジャンル・ポイント設定（投稿）', type: :system do
       fill_in 'Point3', with: @points_genre.point3
       fill_in 'points_genre_explanation', with: @points_genre.explanation
       # 送信するとPointモデルのカウントが1上がることを確認する
-      expect{
+      expect {
         find('input[name="commit"]').click
       }.to change { Point.count }.by(1)
       # お店投稿ページに遷移することを確認する
