@@ -13,6 +13,7 @@ class Shop < ApplicationRecord
   belongs_to :genre
   belongs_to :point
   has_one_attached :image
+  has_many :comments
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

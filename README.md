@@ -91,7 +91,7 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| comment | string     | null: false                    |
+| comment | text       | null: false                    |
 | user    | references | null: false, foreign_key: true |
 | shop    | references | null: false, foreign_key: true |
 
