@@ -203,3 +203,41 @@ RSpec.describe 'お店削除', type: :system do
     end
   end
 end
+
+RSpec.describe 'お店詳細', type: :system do
+  before do
+    @shop = FactoryBot.create(:shop)
+  end
+
+  it 'ログインしたユーザーはお店詳細ページに遷移してコメント投稿欄が表示される' do
+    # ログインする
+    basic_pass new_user_session_path
+    fill_in 'メールアドレス', with: @shop.user.email
+    fill_in 'パスワード', with: @shop.user.password
+    find('input[name="commit"]').click
+    expect(current_path).to eq(root_path)
+    # お店投稿に詳細ページへのリンクがあることを確認する
+    expect(page).to have_link "#{@shop.shop_name}", href: shop_path(@shop.id)
+    # 詳細ページに移動する
+    visit shop_path(@shop.id)
+    # 詳細ページにお店の内容が含まれている
+    expect(page).to have_content("#{@shop.shop_name}")
+    # コメント用のフォームが存在する
+    expect(page).to have_selector 'form'
+  end
+
+  it 'ログインしていない状態でお店詳細ページに遷移できるものの、コメント投稿欄が表示されない' do
+    # トップページに移動する
+    basic_pass root_path
+    # お店投稿に詳細ページへのリンクがあることを確認する
+    expect(page).to have_link "#{@shop.shop_name}", href: shop_path(@shop.id)
+    # 詳細ページに移動する
+    visit shop_path(@shop.id)
+    # 詳細ページにお店の内容が含まれている
+    expect(page).to have_content("#{@shop.shop_name}")
+    # コメント用のフォームが存在しないことを確認する
+    expect(page).to have_no_selector 'form'
+    # 「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
+    expect(page).to have_content('コメントの投稿には新規登録/ログインが必要です')
+  end
+end
