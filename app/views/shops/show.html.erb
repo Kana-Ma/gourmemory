@@ -122,6 +122,11 @@
         <%= @shop.text %>
       </div>
     </div>
+    <div class='posted-address'>
+      <p>
+        住所：<%= @shop.address %>
+      </p>
+    </div>
     <div id="map"></div>
     <div class='link-area'>
       <span>
@@ -137,6 +142,36 @@
           <%= link_to '削除', shop_path(@shop.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'post-button' %>
         </div>
       <% end %>
+    </div>
+    <div class="container">
+      <p class='comment-title'>＜コメント＞</p>
+      <% if user_signed_in? %>
+        <%= form_with(model: [@shop, @comment], local: true) do |f| %>
+          <div class='comment-form'>
+            <div>
+              <%= f.text_area :comment, placeholder: "コメントする", rows: "2" %>
+            </div>
+            <div>
+              <%= f.submit "送信", class: "small-submit-btn" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class='alert-signup-login'>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
+      <% end %>
+      <div class="comments">
+        <% @comments.each do |comment| %>
+          <div class='one-comment'>
+            <p class='name-date'>
+              <%= link_to comment.user.nickname, user_path(comment.user.id) %>さん
+              （<%= l comment.created_at %>）
+            </p>
+            <p>
+              <%= comment.comment %>
+            </p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
