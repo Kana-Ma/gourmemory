@@ -50,7 +50,7 @@ https://gourmemory.work/
 1. ジャンルやPoint等を入力し、設定ボタンを押します。
 
 ```
-ジャンル欄にはインクリメンタルサーチを実装し、すでに他のユーザーが設定済みのジャンル名が表示されるようにしました。
+ジャンル欄にはインクリメンタルサーチを実装し、すでに他のユーザーが設定しているジャンル名が表示されるようにしました。
 ```
 
 ### お店の投稿
@@ -109,8 +109,7 @@ JavaScript, jQuery, Ajax
 MySQL, MariaDB（本番環境）
 
 ### インフラ
-AWS(EC2, S3, Route 53, Certificate Manager)
-Capistrano
+AWS(EC2, S3, Route 53, Certificate Manager)Capistrano
 
 ### Webサーバー（本番環境）
 Nginx
