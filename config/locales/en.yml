@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              invalid_password: "is invalid. Include both letters and numbers"
+            prefecture_id:
+              select_prefecture: "can't be blank"
