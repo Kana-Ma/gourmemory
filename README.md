@@ -126,6 +126,9 @@ RSpec
 ### エディタ
 Visual Studio Code
 
+# 今後の課題
+- リファクタリングを行い、コードの可読性を高めたいと思います。
+
 # DB設計
 [![Image from Gyazo](https://i.gyazo.com/e920e2a436137b171fc0a882a1312fea.png)](https://gyazo.com/e920e2a436137b171fc0a882a1312fea)
 
@@ -225,6 +228,3 @@ Visual Studio Code
 
 - belongs_to :user
 - belongs_to :shop
-
-# 今後の課題
-- リファクタリングを行い、コードの可読性を高めたいと思います。
