@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 1, message: :select_prefecture }
   validates :nickname, presence: true, length: { maximum: 10 }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers'
+  validates_format_of :password, with: PASSWORD_REGEX, message: :invalid_password
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
