@@ -11,3 +11,13 @@ ja:
       messages:
         invalid_password: は英数字両方を含めて入力してください
         select_prefecture: を選択してください
+  activemodel:
+    attributes:
+      points_genre:
+        genre_name: ジャンル名
+        point1: ポイント1
+        point2: ポイント2
+        point3: ポイント3
+        explanation: 評価の説明
+        genre: ジャンル
+        genre_id: そのジャンル
